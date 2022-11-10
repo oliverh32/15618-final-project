@@ -11,7 +11,7 @@ In this project, we are going to implement parallel versions of Gradient Boostin
 In recent years, Gradient Boosting Decision Tree has been widely used in many applications in industry such as advertising and recommendation system. As a boosting method, GBDT ensembles weak classifiers and improves the accuracy. In each iteration, it would build a new tree to reduce the residual caused by previous trees. The algorithm in pseudo code is shown as below (_<https://www.stat.auckland.ac.nz/~yee/784/files/ch10BoostingAdditiveTrees.pdf>_).
 
 
-![algo](./gbdt_code.png)<br>
+![algo](./assets/img/gbdt_code.png)<br>
 
 
 
