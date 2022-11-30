@@ -4,7 +4,7 @@ title: "Milestone"
 ---
 
 
-#### SUMMARY
+#### ACHIEVEMENTS
 The project goes well but there are some challenges. So far, we have completed two GBDT parallel implementations (node parallel and feature parallel) with Open MP and collected some experiment results. We are now working on the third Open MP implementation and the MPI implementation of GBDT. The experiment results and the main challenge are talked in the following sections.
 
 ***
