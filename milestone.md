@@ -10,18 +10,18 @@ The project goes well but there are some challenges. So far, we have completed t
 ***
 #### RESULTS
 ##### Method 1: Node Parallelism
-The building of GBDT is a serial process of building many trees. Each tree can only be built in the dependency of precious trees. Therefore, there is no tree-level parallelism. What we can do is to parallelize the building tree process. The first method is to parallelize the sub-tree building, i.e. node-level parallelizem. Since each node is using different data samples to split to childern nodes, this process can be done in parallel. 
+The building of GBDT is a serial process of building many trees. Each tree can only be built in the dependency of precious trees. Therefore, there is no tree-level parallelism. What we can do is to parallelize the building tree process. The first method is to parallelize the sub-tree building, i.e. node-level parallelizem. Since each node is using different data samples to split to children nodes, this process can be done in parallel. 
 
 However, there is a main problem of workload imbalance. Different node can have different depth, so the workload of each thread can vary a lot. This imbalance of workload results in speedup that is worse than linear.
 
 ##### Method 2: Feature Parallelism
-The second method is feature-level parallelism. To create the children node, we need to enumerate each feature to find the best split. Since features are independent with each other, we can calculate the Gini index for each feature in parallel. After all threads finish, we can gather the results and determine the spliting values. In this method, the workload is balanced because each thread needs to process exactly the same number of instances for one node.
+The second method is feature-level parallelism. To create the children node, we need to enumerate each feature to find the best split. Since features are independent with each other, we can calculate the Gini index for each feature in parallel. After all threads finish, we can gather the results and determine the splitting values. In this method, the workload is balanced because each thread needs to process exactly the same number of instances for one node.
 
 <img src="{{ site.github.url }}/assets/img/milestone.png" alt="exp" width="50%">
 
 
 ##### Method 3: Level Parallelism
-According to [this website](http://zhanpengfang.github.io/418home.html), there is another level parallelism. Instead of first looping nodes and then looping features, we can inverse the order and reduce the sorting overhead in each node. The experiement results on the website show that the level parallelism is very powerful which can achieve better performance than previous methods. However, we did not finish this part yet because it took our days to figure out how it really works and we have been debugging for several days. Now we are still not sure we fully understand it and we have eamiled the author for further explansion.
+According to [this website](http://zhanpengfang.github.io/418home.html), there is another level parallelism. Instead of first looping nodes and then looping features, we can inverse the order and reduce the sorting overhead in each node. The experiement results on the website show that the level parallelism is very powerful which can achieve better performance than previous methods. However, we did not finish this part yet because it took our days to figure out how it really works and we have been debugging for several days. Now we are still not sure we fully understand it and we have emailed the author for further explanation.
 
 ***
 #### CHALLENGE
@@ -36,7 +36,7 @@ According to [this website](http://zhanpengfang.github.io/418home.html), there i
 |:----:|:----:|
 |11/15 | Finish the sequential version |
 |11/17 | Finish the open MP version node-parallelism |
-|11/18 | Finish the oepn MP version feature-parallelism |
+|11/18 | Finish the open MP version feature-parallelism |
 |11/29 | Stuck with open MP version level-parallelism |
 |12/2  | Finish the open MP version level-parallelism - Qinxin and Jiayuan |
 |12/5  | Finish the mpi version - Jiayuan |
